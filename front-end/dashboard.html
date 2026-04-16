@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>🚀 DNS Panel</h2>
+  <ul>
+    <li onclick="showSection('dashboard')" id="nav-dashboard" class="active">📊 Dashboard</li>
+    <li onclick="showSection('dns')" id="nav-dns">🌐 DNS Records</li>
+    <li onclick="showSection('settings')" id="nav-settings">⚙️ Settings</li>
+  </ul>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <h3 id="pageTitle">Dashboard</h3>
+
+    <div class="nav-right">
+      <span id="userName">👤 User</span>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboardSection">
+    <div class="card">
+      <h3>👋 Welcome</h3>
+      <p id="welcomeUser"></p>
+    </div>
+
+    <div class="card">
+      <h3>📈 Total DNS Records</h3>
+      <p id="totalRecords">0</p>
+    </div>
+  </div>
+
+  <!-- DNS -->
+  <div id="dnsSection" style="display:none">
+
+    <div class="card">
+      <h3>➕ Add / Edit DNS Record</h3>
+
+      <input type="hidden" id="recordId">
+
+      <div class="input-group">
+        <label>🌐 Domain</label>
+        <input type="text" id="domain" placeholder="example.com">
+      </div>
+
+      <div class="input-group">
+        <label>🖥 IP Address</label>
+        <input type="text" id="ip" placeholder="192.168.1.1">
+      </div>
+
+      <button onclick="addOrUpdate()">💾 Save Record</button>
+      <p id="msg"></p>
+    </div>
+
+    <div class="card">
+      <h3>📋 DNS Records</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>🌐 Domain</th>
+            <th>🖥 IP</th>
+            <th>⚙️ Actions</th>
+          </tr>
+        </thead>
+        <tbody id="recordsTable"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settingsSection" style="display:none">
+    <div class="card">
+      <h3>⚙️ Settings</h3>
+
+      <button onclick="clearData()">🧹 Clear All Records</button>
+      <button onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

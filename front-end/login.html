@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+  <div class="login-left">
+    <h1>Welcome Back 👋</h1>
+    <p>Login to access your dashboard and manage your data.</p>
+  </div>
+
+  <div class="login-card">
+    <h2>Sign In</h2>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="text" id="username" required>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" required>
+      </div>
+
+      <button type="submit">Login</button>
+     
+    </form>
+
+    <p id="error" class="error"></p>
+  </div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+</html>
