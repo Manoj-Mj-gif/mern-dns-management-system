@@ -2,14 +2,15 @@ const allowedOrigins = [
   "http://127.0.0.1:5500",
   "http://localhost:5500"
 ];
+
 const corsMiddleware = (req, res, next) => {
   const origin = req.headers.origin;
 
   console.log("Request from:", origin);
 
-  // ✅ allow only defined origins
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
+  // ✅ allow requests with no origin (Postman / direct browser)
+  if (!origin || allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin || "*");
   } else {
     return res.status(403).json({ message: "Blocked by CORS ❌" });
   }
