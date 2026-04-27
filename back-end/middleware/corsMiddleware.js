@@ -1,5 +1,7 @@
 const allowedOrigins = [
-  "http://127.0.0.1:5500"
+  "http://127.0.0.1:5500",   // local frontend
+  "http://localhost:5500",   // optional
+  "https://your-frontend-url.com" // (future deploy - optional)
 ];
 
 const corsMiddleware = (req, res, next) => {
@@ -7,12 +9,18 @@ const corsMiddleware = (req, res, next) => {
 
   console.log("Request from:", origin);
 
+  // ✅ allow only defined origins
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
+  } else {
+    return res.status(403).json({ message: "Blocked by CORS ❌" });
   }
 
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, x-api-key");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, x-api-key"
+  );
 
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
