@@ -32,7 +32,7 @@ function showSection(section) {
 
 // LOAD RECORDS
 async function loadRecords() {
-  const res = await fetch("http://localhost:5000/api/dns", {
+  const res = await fetch("https://cron-backend-uhya.onrender.com/api/dns", {
     headers: { Authorization: token }
   });
 
@@ -61,8 +61,8 @@ async function addOrUpdate() {
   const ip = document.getElementById("ip").value;
 
   const url = id
-    ? `http://localhost:5000/api/dns/${id}`
-    : "http://localhost:5000/api/dns/add";
+    ? `https://cron-backend-uhya.onrender.com/api/dns/${id}`
+    : "https://cron-backend-uhya.onrender.com/api/dns/add";
 
   const method = id ? "PUT" : "POST";
 
@@ -87,7 +87,7 @@ function editRecord(id, domain, ip) {
 
 // DELETE
 async function deleteRecord(id) {
-  await fetch(`http://localhost:5000/api/dns/${id}`, {
+  await fetch(`https://cron-backend-uhya.onrender.com/api/dns/${id}`, {
     method: "DELETE",
     headers: { Authorization: token }
   });
@@ -97,7 +97,7 @@ async function deleteRecord(id) {
 
 // DASHBOARD
 async function updateDashboard() {
-  const res = await fetch("http://localhost:5000/api/dns", {
+  const res = await fetch("https://cron-backend-uhya.onrender.com/dns", {
     headers: { Authorization: token }
   });
 

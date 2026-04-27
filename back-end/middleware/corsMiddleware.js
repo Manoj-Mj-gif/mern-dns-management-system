@@ -1,9 +1,7 @@
 const allowedOrigins = [
-  "http://127.0.0.1:5500",   // local frontend
-  "http://localhost:5500",   // optional
-  "https://your-frontend-url.com" // (future deploy - optional)
+  "http://127.0.0.1:5500",
+  "http://localhost:5500"
 ];
-
 const corsMiddleware = (req, res, next) => {
   const origin = req.headers.origin;
 
