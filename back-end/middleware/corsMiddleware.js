@@ -1,6 +1,7 @@
 const allowedOrigins = [
   "http://127.0.0.1:5500",
-  "http://localhost:5500"
+  "http://localhost:5500",
+  "https://cron-frontend.onrender.com" // 🔥 ADD THIS
 ];
 
 const corsMiddleware = (req, res, next) => {
@@ -8,7 +9,7 @@ const corsMiddleware = (req, res, next) => {
 
   console.log("Request from:", origin);
 
-  // ✅ allow requests with no origin (Postman / direct browser)
+  // ✅ allow Postman / direct calls
   if (!origin || allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin || "*");
   } else {
